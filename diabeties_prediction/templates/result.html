@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Result</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+      body {
+          background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .card {
+          border-radius: 20px;
+          padding: 30px;
+          box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+          text-align: center;
+          max-width: 700px;
+      }
+      .btn-home {
+          margin-top: 20px;
+          border-radius: 50px;
+          padding: 10px 25px;
+      }
+      .map-container {
+          margin-top: 20px;
+          border-radius: 15px;
+          overflow: hidden;
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      {% if result == "Diabetic" %}
+        <h2 class="text-danger">⚠️ You are {{ result }}</h2>
+        <p class="fw-bold">We recommend consulting a doctor as soon as possible.</p>
+
+        <div class="map-container">
+          <iframe
+              src="https://www.google.com/maps?q=clinics+near+me&output=embed"
+              width="100%" height="300" style="border:0;" allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+
+      {% else %}
+        <h2 class="text-success">✅ You are {{ result }}</h2>
+        <p class="fw-bold">Great! Here are some tips to stay healthy:</p>
+        <ul class="list-group text-start">
+          <li class="list-group-item">🍎 Maintain a balanced diet low in sugar.</li>
+          <li class="list-group-item">🏃 Stay active with regular exercise.</li>
+          <li class="list-group-item">💧 Drink enough water daily.</li>
+          <li class="list-group-item">🛌 Get sufficient sleep.</li>
+          <li class="list-group-item">🧘 Manage stress effectively.</li>
+        </ul>
+      {% endif %}
+
+      <a href="/" class="btn btn-primary btn-home">🔙 Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>
